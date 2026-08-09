@@ -1,0 +1,23 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::table('property_images', function (Blueprint $table) {
+            // 'public' = storage symlink, 'uploads' = direct public/uploads path
+            $table->string('disk', 20)->default('public')->after('image_path');
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::table('property_images', function (Blueprint $table) {
+            $table->dropColumn('disk');
+        });
+    }
+};
