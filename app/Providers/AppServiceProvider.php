@@ -21,10 +21,9 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFive();
 
         // Force HTTPS in production
-        if (app()->environment('production')) {
+        if (app()->environment('production') && !app()->isLocal()) {
             URL::forceScheme('https');
         }
-
         // Share site-wide settings with all views
         View::composer('*', function ($view) {
             try {
