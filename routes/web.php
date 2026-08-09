@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\ProfileController;
 
 // ── Language switcher ───────────────────────────────────────────────────────
 // Persists the chosen locale in the session and a 1-year cookie, then returns
@@ -104,7 +105,14 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::patch('/employees/{employee}/reset-password', [EmployeeController::class, 'resetPassword'])->name('employees.reset-password')->middleware('menu:employees');
     Route::delete('/employees/{employee}', [EmployeeController::class, 'destroy'])->name('employees.destroy')->middleware('menu:employees');
 
+
+
     // Permissions
     Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions.index')->middleware('menu:permissions');
     Route::put('/permissions', [PermissionController::class, 'update'])->name('permissions.update')->middleware('menu:permissions');
+
+    // Profile
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
 });
