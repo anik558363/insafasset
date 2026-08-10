@@ -19,7 +19,7 @@ class PropertyController extends Controller
 
         if ($request->filled('search')) {
             $query->where('title', 'like', '%' . $request->search . '%')
-                  ->orWhere('location_text', 'like', '%' . $request->search . '%');
+                ->orWhere('location_text', 'like', '%' . $request->search . '%');
         }
         if ($request->filled('status')) {
             $query->where('status', $request->status);
@@ -40,12 +40,20 @@ class PropertyController extends Controller
 
     public function store(PropertyRequest $request)
     {
-    
-        
+
+
+
         $data = $request->validated();
         $data['user_id'] = auth()->id();
         $data['featured'] = $request->boolean('featured');
         $data['slug'] = Str::slug($data['title']) . '-' . Str::random(6);
+
+        // Generate unique Property ID starting from 1000
+        $lastPropertyId = Property::max('property_id');
+
+        $data['property_id'] = $lastPropertyId
+            ? $lastPropertyId + 1
+            : 1000;
 
         $property = Property::create($data);
 

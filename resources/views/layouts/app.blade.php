@@ -173,13 +173,13 @@
         .property-card .card-img-wrapper {
             position: relative;
             overflow: hidden;
-            height: 220px;
+            /* height: 220px; */
         }
 
         .property-card .card-img-wrapper img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            /* object-fit: cover; */
             transition: transform 0.5s ease;
         }
 
@@ -338,7 +338,7 @@
 
         @media (max-width: 768px) {
             .section-title { font-size: 1.8rem; }
-            .property-card .card-img-wrapper { height: 180px; }
+            /* .property-card .card-img-wrapper { height: 180px; } */
         }
 
         /* Language switcher */
