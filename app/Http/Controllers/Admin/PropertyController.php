@@ -40,8 +40,9 @@ class PropertyController extends Controller
 
     public function store(PropertyRequest $request)
     {
-    
-        
+
+  
+
         $data = $request->validated();
         $data['user_id'] = auth()->id();
         $data['featured'] = $request->boolean('featured');
