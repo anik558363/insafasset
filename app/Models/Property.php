@@ -11,11 +11,35 @@ class Property extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'slug', 'description', 'category_id', 'user_id', 'type',
-        'listing_type', 'price', 'price_unit', 'size', 'size_unit',
-        'bedrooms', 'bathrooms', 'location_text', 'division', 'district', 'area',
-        'latitude', 'longitude', 'youtube_link', 'facebook_video_url', 'status', 'featured',
-        'views_count', 'meta_title', 'meta_description','agent_name','agent_phone'
+        'title',
+        'slug',
+        'description',
+        'category_id',
+        'user_id',
+        'type',
+        'listing_type',
+        'price',
+        'price_unit',
+        'size',
+        'size_unit',
+        'bedrooms',
+        'bathrooms',
+        'location_text',
+        'division',
+        'district',
+        'area',
+        'latitude',
+        'longitude',
+        'youtube_link',
+        'facebook_video_url',
+        'status',
+        'featured',
+        'views_count',
+        'meta_title',
+        'meta_description',
+        'agent_name',
+        'agent_phone',
+        'property_id'
     ];
 
     protected $casts = [
@@ -123,7 +147,7 @@ class Property extends Model
         }
         if (!empty($filters['area'])) {
             $query->where('area', 'like', '%' . $filters['area'] . '%')
-                  ->orWhere('location_text', 'like', '%' . $filters['area'] . '%');
+                ->orWhere('location_text', 'like', '%' . $filters['area'] . '%');
         }
         if (!empty($filters['min_price'])) {
             $query->where('price', '>=', $filters['min_price']);
@@ -155,15 +179,13 @@ class Property extends Model
             }
         });
     }
-    
+
     public function getFirstImageAttribute()
-{
-    $image = $this->images->first();
+    {
+        $image = $this->images->first();
 
-    return $image
-        ? asset($image->image)
-        : asset('images/no-image.svg');
-}
-
-
+        return $image
+            ? asset($image->image)
+            : asset('images/no-image.svg');
+    }
 }

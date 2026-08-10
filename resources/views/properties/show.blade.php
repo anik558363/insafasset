@@ -273,8 +273,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="spec-item">
-                                <span class="label">{{ __('messages.property.id') }}</span>
-                                <span class="value">#{{ str_pad($property->id, 4, '0', STR_PAD_LEFT) }}</span>
+                                <span class="label"> Property ID </span>
+                                <span class="value">#{{ str_pad($property->property_id, 4, '0', STR_PAD_LEFT) }}</span>
                             </div>
                             <div class="spec-item">
                                 <span class="label">{{ __('messages.property.type') }}</span>
