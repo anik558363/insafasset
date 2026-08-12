@@ -44,8 +44,7 @@ class Property extends Model
 
     protected $casts = [
         'featured' => 'boolean',
-        'price' => 'decimal:2',
-        'size' => 'decimal:2',
+
         'latitude' => 'decimal:7',
         'longitude' => 'decimal:7',
     ];
@@ -102,7 +101,7 @@ class Property extends Model
 
     public function getFormattedPriceAttribute(): string
     {
-        return '৳ ' . number_format($this->price, 0);
+        return '৳ ' . $this->price;
     }
 
     /**
@@ -113,7 +112,7 @@ class Property extends Model
      */
     public function getPriceHtmlAttribute(): string
     {
-        return '<span class="taka">৳</span> ' . number_format($this->price, 0);
+        return '<span class="taka">৳</span> ' . $this->price;
     }
 
     public function incrementViews(): void
