@@ -151,6 +151,7 @@
             opacity: 0.6;
             transition: opacity 0.2s;
             border: 2px solid transparent;
+            max-height: 120px;
         }
 
         .galleryThumbs .swiper-slide-thumb-active img {
@@ -162,6 +163,19 @@
             .galleryMain img {
                 height: 260px;
             }
+
+
+             .galleryThumbs .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            /* object-fit: cover; */
+            border-radius: 6px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+            border: 2px solid transparent;
+            max-height: 80px;
+        }
         }
     </style>
 @endpush
