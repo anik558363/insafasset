@@ -59,7 +59,7 @@
         .card-img-wrapper {
             position: relative;
             overflow: hidden;
-            height: 350px !important;
+            height: 300px !important;
         }
     </style>
 @endpush
